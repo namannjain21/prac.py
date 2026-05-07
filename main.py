@@ -1,3 +1,10 @@
+https://drive.google.com/drive/folders/1v-uAhjIKcurzH9P1GMT9TFDKGWxepirs
+
+
+
+
+
+
 
 from socket import socket
 import os
@@ -332,3 +339,99 @@ ticket2 = AirlineTicket(dep2, arr2, f_num2, row2, letter2)
 
 ticket1.display_details()
 ticket2.display_details()
+
+
+
+
+
+
+Create program that takes age of the user as input 
+and prints number of days that user has lived for 
+Exception handle the code such that if the user has lived for more than 
+100001 days then user should get the message
+, you lived for so long , may be you will die soon:)
+
+# write a program to take some text lines from the user and write it to the file
+# write a program to read from a file and write to another file 
+# Write a program to read from a file and modify eacf of its line by pre-pending each line with "DIOT-" 
+# Write a program to read from a file, pre-pending each line with "DIOT-" 
+# and write to the different file
+import os
+import sys
+
+def main():
+    try:
+        user_age = input("Enter your age: ")
+        total_days = float(user_age) * 365
+        print(f"You have lived for approximately {int(total_days)} days.")
+        
+        if total_days > 100001:
+            print("you lived for so long , may be you will die soon:)")
+            
+    except ValueError:
+        print("Error: Invalid numeric input.")
+        sys.exit()
+
+    try:
+        file_write = input("Enter name for a new file to create: ")
+        print("Enter text (type 'DONE' to stop):")
+        with open(file_write, 'w') as f:
+            while True:
+                text = input("> ")
+                if text.upper() == 'DONE':
+                    break
+                f.write(text + "\n")
+
+        file_copy = input(f"Enter filename to copy '{file_write}' into: ")
+        with open(file_write, 'r') as fr, open(file_copy, 'w') as fw:
+            fw.write(fr.read())
+
+        file_final = input("Enter filename for the final DIOT- version: ")
+        with open(file_copy, 'r') as fr, open(file_final, 'w') as fw:
+            for line in fr:
+                if line.strip():
+                    modified = "DIOT-" + line
+                    print(f"Processing: {modified.strip()}")
+                    fw.write(modified)
+                else:
+                    fw.write(line)
+
+        print("All operations completed successfully.")
+
+    except FileNotFoundError:
+        print("Error: The specified file could not be found.")
+    except PermissionError:
+        print("Error: Permission denied.")
+    except IOError as e:
+        print(f"Error: An I/O error occurred: {e}")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+# Write a program that creates a list of 5 elements of your choice 
+# Now take the index that the user want the data of and print the value at that 
+# location 
+# Exception handle the code to  terminate gracefully by printing 
+# Value not found if the index doesnot exists 
+import sys
+def main():
+    items = ["Python", "Java", "C++", "JavaScript", "Rust"]
+    print(f"The list has {len(items)} elements.")
+
+    try:
+        user_input = input("Enter the index (0-4) to see the value: ")
+        index = int(user_input)
+        print(f"Value at index {index}: {items[index]}")
+        
+    except (IndexError, ValueError):
+        print("Value not found")
+        sys.exit()
+
+if __name__ == "__main__":
+    main()
